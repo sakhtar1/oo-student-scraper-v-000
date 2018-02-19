@@ -40,7 +40,7 @@ class Scraper
       end
       student = student_index.join(": ")
 
-      binding.pry
+    
 
   end
 
