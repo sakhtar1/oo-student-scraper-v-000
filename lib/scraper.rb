@@ -1,5 +1,5 @@
 require 'open-uri'
-require 'pry'
+#require 'pry'
 
 
 class Scraper
@@ -78,11 +78,6 @@ class Scraper
       profile_quote = doc.css(".profile-quote").text
       bio =  doc.css(".description-holder p").text
 
-      #if twitter = "" || linkedin = "" || github = "" || blog = "" ||
-    #  profile_quote = "" || bio = ""
-      #  return twitter = nil || linkedin = nil || github = nil || blog = nil ||
-      #  profile_quote = nil || bio = nil
-    #  end
     scraped_student = {
         :twitter => twitter[0],
         :linkedin => linkedin[0],
