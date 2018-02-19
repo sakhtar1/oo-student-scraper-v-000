@@ -33,13 +33,14 @@ class Scraper
 
 
       student_index = []
-      hash = {}
       x = 0
       names.each do |name|
-        student_index << {:name => name, :location => locations[x], :profile_url => profile_urls[x]}
+        student_index << [name = name, location = locations[x], profile_url= profile_urls[x]]
         x += 1
       end
-      student_index
+      student = student_index.join(": ")
+
+      binding.pry
 
   end
 
