@@ -7,40 +7,41 @@ class Scraper
   def self.scrape_index_page(index_url)
     index_url = "./fixtures/student-site/index.html"
     doc = Nokogiri::HTML(open(index_url))
-
-     name = doc.css("h4.student-name")
-     names = []
-     name.select do |n|
-      names << n.text
-     end
-     names
-
-      location = doc.css("p.student-location")
-      locations = []
-      location.select do |l|
-        locations << l.text
+ 
+      name = doc.css("h4.student-name")
+      names = []
+      name.select do |n|
+       names << n.text
       end
-      locations
-
-      profile_url = doc.css(".student-card a[href]")
-      profile_urls = []
-      profile_url.select do |url|
-       profile_urls << url['href']
-      end
-      profile_urls
-
-
-
-
-      student_index = []
-      x = 0
-      names.each do |name|
-        student_index << [name = name, location = locations[x], profile_url= profile_urls[x]]
-        x += 1
-      end
-      student = student_index.join(": ")
-
-  end
+      names
+ 
+       location = doc.css("p.student-location")
+       locations = []
+       location.select do |l|
+         locations << l.text
+       end
+       locations
+ 
+       profile_url = doc.css(".student-card a[href]")
+       profile_urls = []
+       profile_url.select do |url|
+        profile_urls << url['href']
+       end
+       profile_urls
+ 
+ 
+ 
+ 
+       student_index = []
+       hash = {}
+       x = 0
+       names.each do |name|
+         student_index << {:name => name, :location => locations[x], :profile_url => profile_urls[x]}
+         x += 1
+       end
+       student_index
+ 
+    end		
 
   def self.scrape_profile_page(profile_url)
     doc = Nokogiri::HTML(open(profile_url))
