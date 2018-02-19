@@ -40,8 +40,6 @@ class Scraper
       end
       student = student_index.join(": ")
 
-    
-
   end
 
   def self.scrape_profile_page(profile_url)
